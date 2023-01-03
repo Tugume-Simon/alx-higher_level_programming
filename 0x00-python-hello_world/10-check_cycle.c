@@ -8,7 +8,7 @@
  */
 int check_cycle(listint_t *list)
 {
-	int b; /* boolean */
+	int b; /* boolean, 0-false, 1-true */
 	listint_t *forward;
 	
 	if (list == NULL)
@@ -18,7 +18,7 @@ int check_cycle(listint_t *list)
 	forward = list->next;
 	while (forward != NULL)
 	{
-		if (forward == list)
+		if (forward->next == list)
 		{
 			b = 1;
 			break;
