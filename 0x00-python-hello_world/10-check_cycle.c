@@ -9,21 +9,22 @@
 int check_cycle(listint_t *list)
 {
 	int b; /* boolean */
-	listint_t *current;
+	listint_t *forward;
 	
 	if (list == NULL)
 		return (0);
 
 	b = 0;
-	current = list;
-	do {
-		current = current->next;
-		if (current == list)
+	forward = list->next;
+	while (forward != NULL)
+	{
+		if (forward == list)
 		{
 			b = 1;
 			break;
 		}
-	} while (current != NULL);
+		forward = forward->next;
+	}
 
 	return (b);
 }
