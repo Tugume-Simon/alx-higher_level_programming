@@ -13,7 +13,9 @@ int main(void)
 	listint_t *head;
 
 	head = NULL;
+	/*
 	add_nodeint_end(&head, 0);
+	*/
 	add_nodeint_end(&head, 1);
 	add_nodeint_end(&head, 2);
 	add_nodeint_end(&head, 3);
@@ -25,7 +27,7 @@ int main(void)
 
 	printf("------------------\n");
 
-	insert_node(&head, 27);
+	insert_node(&head, 0);
 
 	print_listint(head);
 
