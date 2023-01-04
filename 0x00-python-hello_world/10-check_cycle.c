@@ -17,12 +17,14 @@ int check_cycle(listint_t *list)
 
 	b = 0;
 	forward = list->next;
+	if (forward == list)
+		return (1);
 	while (forward != NULL)
 	{
 		check = list;
 		while (check != NULL && check != forward)
 		{
-			if (forward->next == check || forward == list)
+			if (forward->next == check)
 			{
 				return (1);
 			}
