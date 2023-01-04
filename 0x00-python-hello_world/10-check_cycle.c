@@ -10,6 +10,7 @@ int check_cycle(listint_t *list)
 {
 	int b; /* boolean, 0-false, 1-true */
 	listint_t *forward;
+	listint_t *check;
 	
 	if (list == NULL)
 		return (0);
@@ -18,11 +19,18 @@ int check_cycle(listint_t *list)
 	forward = list->next;
 	while (forward != NULL)
 	{
-		if (forward->next == list)
+		check = list;
+		while (check != NULL && check != forward)
 		{
-			b = 1;
-			break;
+			if (forward->next == check)
+			{
+				b = 1;
+				break;
+			}
+			check = check->next;
 		}
+		if (b == 1)
+			break;
 		forward = forward->next;
 	}
 
