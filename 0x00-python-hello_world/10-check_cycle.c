@@ -17,6 +17,8 @@ int check_cycle(listint_t *list)
 
 	b = 0;
 	forward = list->next;
+	if (forward == list)
+		return (1);
 	while (forward != NULL)
 	{
 		check = list;
@@ -24,13 +26,10 @@ int check_cycle(listint_t *list)
 		{
 			if (forward->next == check)
 			{
-				b = 1;
-				break;
+				return (1);
 			}
 			check = check->next;
 		}
-		if (b == 1)
-			break;
 		forward = forward->next;
 	}
 
