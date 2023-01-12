@@ -21,6 +21,8 @@ int is_palindrome(listint_t **head)
 	while (curr != NULL)
 	{
 		check = curr;
+		if (!check->next)
+			break;
 		while (check->next->next != NULL)
 		{
 			check = check->next;
