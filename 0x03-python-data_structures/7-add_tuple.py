@@ -5,19 +5,18 @@ def add_tuple(tuple_a=(), tuple_b=()):
     new_t = ()
 
     if la == 0:
-        tuple_a = (0,)
-        la = 1
+        tuple_a = (0, 0)
     if lb == 0:
-        tuple_b = (0,)
-        lb = 1
-    if la > lb:
-        for j in range((2 - lb), 2):
-            tuple_b += (0,)
-    elif lb > la:
-        for j in range((2 - la), 2):
+        tuple_b = (0, 0)
+
+    if la < 2:
+        for i in range(2 - la, 2):
             tuple_a += (0,)
+    if lb < 2:
+        for i in range(2 - lb, 2):
+            tuple_b += (0,)
 
-    for i in range(2):
-        new_t += (tuple_a[i] + tuple_b[i],)
+    for j in range(2):
+        new_t = (tuple_a[i] + tuple_b[i],)
 
-    return (new_t)
+    return new_t
