@@ -10,16 +10,19 @@ def roman_to_int(roman_string):
             'M': 1000
             }
 
-    if roman_string == '' or roman_string is None:
-        return None
+    if roman_string == '' or roman_string is None or \
+            not isinstance(roman_string, str):
+        return 0
 
     prev = 0
     integer = 0
-    for letter in roman_string:
+    list_roman = list(roman_string)
+    list_roman.reverse()
+    for letter in list_roman:
         inc = conversions[letter]
-        if inc > prev and prev != 0:
-            integer -= inc
-        else:
+        if inc >= prev:
             integer += inc
+        else:
+            integer -= inc
         prev = inc
-    return integer if integer > 0 else integer
+    return integer
