@@ -18,21 +18,17 @@ int check_cycle(listint_t *list)
 
 	b = 0;
 	forward = list;
-	while (forward->next != NULL && forward->next != list)
+	check = list;
+	while (forward != NULL && forward->next != NULL)
 	{
-		forward = forward->next;
-	}
+		check = check->next;
+		forward = forward->next->next;
 
-	check = forward;
-	forward = list;
-	while (forward != NULL)
-	{
-		if (forward == check->next)
+		if (check == forward)
 		{
 			b = 1;
 			break;
 		}
-		forward = forward->next;
 	}
 	return (b);
 }
