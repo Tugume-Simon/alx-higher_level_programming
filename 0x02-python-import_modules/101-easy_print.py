@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-exit("#pythoniscool")
-"nsdf"
+__import__('sys').stdout.write("#pythoniscool\n");
