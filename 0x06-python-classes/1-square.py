@@ -6,7 +6,7 @@ create square objects.
 """
 
 
-class Square():
+class Square:
     """make square class
 
     The size of the square is intentionally made private
