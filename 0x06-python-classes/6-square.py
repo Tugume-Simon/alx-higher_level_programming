@@ -29,6 +29,8 @@ class Square:
 
         if type(position) is not tuple and len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
+        elif type(position[0]) is not int and type(position[1]) is not int:
+            raise TypeError("position must be a tuple of 2 positive integers")
         elif position[0] < 0 or position[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
 
@@ -63,6 +65,8 @@ class Square:
         """setter for the private position attribute"""
 
         if type(value) is not tuple and len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif type(position[0]) is not int and type(position[1]) is not int:
             raise TypeError("position must be a tuple of 2 positive integers")
         elif value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
