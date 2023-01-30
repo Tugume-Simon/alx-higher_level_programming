@@ -68,11 +68,15 @@ class Rectangle:
 
     def __str__(self):
         """returns the print of the rectangle"""
+
         ret_str = ""
-        for i in range(self.__height):
-            for j in range(self.__width):
-                ret_str += "#"
-            ret_str += "\n"
+        if self.__width != 0 and self.__height != 0:
+            for i in range(self.__height):
+                for j in range(self.__width):
+                    ret_str += "#"
+                if i != self.__height - 1:
+                    ret_str += "\n"
+
         return ret_str
 
     def __repr__(self):

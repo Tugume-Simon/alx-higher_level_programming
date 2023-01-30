@@ -106,11 +106,15 @@ class Rectangle:
 
     def __str__(self):
         """return a print out of the rectangle representation"""
+
         ret_str = ""
-        for i in range(self.__height):
-            for j in range(self.__width):
-                ret_str += str(self.print_symbol)
-            ret_str += "\n"
+        if self.__width != 0 and self.__height != 0:
+            for i in range(self.__height):
+                for j in range(self.__width):
+                    ret_str += "#"
+                if i != self.__height - 1:
+                    ret_str += "\n"
+
         return ret_str
 
     def __repr__(self):
