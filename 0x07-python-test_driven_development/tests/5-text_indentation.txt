@@ -1,0 +1,32 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+This file tests a module 5-text_indentation that prints
+2 newline characters whenever it encounters either of ':',
+'.' or '?' characters
+Imports & parent-directory
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Tests
+	>>> text_indentation("I am a group. of?Deliverly service: I will supply")
+	I am a group.
+	<BLANKLINE>	
+	of?
+	<BLANKLINE>
+	Deliverly service:
+	<BLANKLINE>
+	I will supply
+
+	>>> text_indentation(2)
+	Traceback (most recent call last):
+	...
+    	TypeError: text must be a string
+	
+	>>> text_indentation("    Type of persons. Today.   ")
+	Type of persons.
+	<BLANKLINE>
+	Today.
+	<BLANKLINE>

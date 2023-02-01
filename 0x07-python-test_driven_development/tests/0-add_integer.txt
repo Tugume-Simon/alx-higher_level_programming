@@ -29,3 +29,23 @@ Tests
 	Traceback (most recent call last):
 	...
 	TypeError: b must be an integer
+
+	>>> add_integer(None, 3)
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+	>>> add_integer(9, [3, 4, 1])
+	Traceback (most recent call last):
+        ...
+        TypeError: b must be an integer
+
+	>>> add_integer({4, "call", 5.2}, 5)
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+	>>> add_integer(1.46, (3, 4, 5))
+	Traceback (most recent call last):
+        ...
+        TypeError: b must be an integer

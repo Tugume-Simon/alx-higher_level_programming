@@ -1,0 +1,24 @@
+The ``3-say_my_name`` module
+============================
+
+Using ``say_my_name``
+---------------------
+
+This file tests a module say_my_name that prints
+the name from arguments provided.
+Imports & parent-directory
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Tests
+	>>> say_my_name("Tugume", "Peter")
+	My name is Tugume Peter
+
+	>>> say_my_name("John", 3)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+	>>> say_my_name(['D', 'o', 'e'], "Theo")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
