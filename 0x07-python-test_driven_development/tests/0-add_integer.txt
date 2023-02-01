@@ -20,6 +20,9 @@ Tests
 	>>> add_integer(2, 1.3)
 	3
 
+	>>> add_integer(4)
+	102
+
 	>>> add_integer("2", 1)
 	Traceback (most recent call last):
 	...
