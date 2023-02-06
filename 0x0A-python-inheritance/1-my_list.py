@@ -18,8 +18,8 @@ class MyList(list):
         order
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, iterable=()):
+        super().__init__(iterable)
 
     def print_sorted(self):
         """prints a list in ascending order (sorted)"""
