@@ -45,3 +45,7 @@ Tests:
 
 	>>> len(list1)
 	6
+
+	>>> for i in list1:
+	...	print(i, end="")
+	1231057
