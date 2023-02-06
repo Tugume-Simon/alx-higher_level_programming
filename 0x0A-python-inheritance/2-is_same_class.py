@@ -11,9 +11,6 @@ def is_same_class(obj, a_class):
 
     Return: True if test is successful, otherwise false
     """
-    
-    if type(a_class) is not type:
-        return False
 
     name = a_class.__name__
     cls = obj.__class__
