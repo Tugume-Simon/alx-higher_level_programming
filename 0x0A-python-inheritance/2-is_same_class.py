@@ -12,7 +12,5 @@ def is_same_class(obj, a_class):
     Return: True if test is successful, otherwise false
     """
 
-    if (isinstance(obj, a_class)):
-        return True
-    else:
-        return False
+    name = a_class.__name__
+    return hasattr(obj, "__{}__".format(name)) and isinstance(obj, a_class)
