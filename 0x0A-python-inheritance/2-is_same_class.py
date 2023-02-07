@@ -14,5 +14,6 @@ def is_same_class(obj, a_class):
 
     name = a_class.__name__
     cls = obj.__class__
-    return isinstance(obj, a_class) and issubclass(cls, a_class)\
-        and hasattr(obj, "__{}__".format(name))
+    #return isinstance(obj, a_class) and issubclass(cls, a_class)\
+        #and hasattr(obj, "__{}__".format(name))
+    return issubclass(cls, a_class) and hasattr(obj, "__{}__".format(name))
