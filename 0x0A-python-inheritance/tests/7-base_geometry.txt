@@ -1,0 +1,23 @@
+The ``7-base_geometry`` module
+==============================
+
+Using ``BaseGeometry`` class
+----------------------------
+
+This file tests a module 7-base_geometry
+that implements base geometry
+
+Import:
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+
+Tests:
+	>>> bg.integer_validator("int1", "3")
+	Traceback (most recent call last):
+	...
+    	TypeError: int1 must be an integer
+
+	>>> bg.integer_validator("int2", -4)
+	Traceback (most recent call last):
+	...
+	ValueError: int2 must be greater than 0
