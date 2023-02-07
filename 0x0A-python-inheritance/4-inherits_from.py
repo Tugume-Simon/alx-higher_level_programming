@@ -11,5 +11,5 @@ def inherits_from(obj, a_class):
     Return: True if true, otherwise False
     """
 
-    cls = obj.__class__
-    return isinstance(obj, a_class)
+    cls = obj.__name__
+    return isinstance(obj, a_class) and hasattr(obj, "__{}__".format(cls))
