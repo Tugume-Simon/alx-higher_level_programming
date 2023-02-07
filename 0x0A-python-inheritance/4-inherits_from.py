@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """<function `inherits_from`>"""
 
+
 def inherits_from(obj, a_class):
     """check to see if an object is derived from a class
 
@@ -11,5 +12,5 @@ def inherits_from(obj, a_class):
     Return: True if true, otherwise False
     """
 
-    cls = obj.__name__
-    return isinstance(obj, a_class) and hasattr(obj, "__{}__".format(cls))
+    return obj.__class__ is not a_class and\
+        issubclass(obj.__class__, a_class)
