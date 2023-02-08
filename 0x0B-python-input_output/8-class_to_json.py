@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Dictionary description of objects"""
-json = __import__('json')
 
 
 def class_to_json(obj):
