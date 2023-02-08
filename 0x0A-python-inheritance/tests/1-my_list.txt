@@ -79,3 +79,8 @@ Tests:
 
 	>>> issubclass(MyList, list)
 	True
+
+	>>> list1.print_sorted(1)
+	Traceback (most recent call last):
+	...
+    	TypeError: print_sorted() takes 1 positional argument but 2 were given
