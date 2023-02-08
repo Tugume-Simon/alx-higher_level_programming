@@ -16,14 +16,15 @@ def append_after(filename="", search_string="", new_string=""):
         with open(filename, 'r+', encoding='utf-8') as f:
             lines = f.readlines()
             count = 0
+    except OSError as e:
+        if e.errno == 36:
+            return
 
-            for line in lines:
-                if search_string in line:
-                    lines.insert(count + 1, new_string)
-                count += 1
+    for line in lines:
+        if search_string in line:
+            lines.insert(count + 1, new_string)
+        count += 1
 
-        with open(filename, 'w', encoding='utf-8') as g:
-            lines = "".join(lines)
-            g.write(lines)
-    except Exception:
-        pass
+    with open(filename, 'w', encoding='utf-8') as g:
+        lines = "".join(lines)
+        g.write(lines)
