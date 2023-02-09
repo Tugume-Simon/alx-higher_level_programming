@@ -36,3 +36,44 @@ testing area calculation
 	...
     	Exception: area() is not implemented
 
+checking valid input
+	>>> bg.integer_validator("width", 3)
+
+checking for area with arguments
+	>>> bg.area(1)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 2 were given
+
+checking for non-integral values
+	>>> bg.integer_validator("height", [2])
+	Traceback (most recent call last):
+	...
+    	TypeError: height must be an integer
+
+	>>> bg.integer_validator("length", (3, 4))
+	Traceback (most recent call last):
+	...
+    	TypeError: length must be an integer
+
+	>>> bg.integer_validator("width", None)
+	Traceback (most recent call last):
+	...
+    	TypeError: width must be an integer
+
+	>>> bg.integer_validator("value", {2, 3})
+	Traceback (most recent call last):
+	...
+    	TypeError: value must be an integer
+
+checking for values not greater than 0
+	>>> bg.integer_validator("value", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: value must be greater than 0
+
+	>>> bg.integer_validator("value", -2)
+	Traceback (most recent call last):
+	...
+	ValueError: value must be greater than 0
+
