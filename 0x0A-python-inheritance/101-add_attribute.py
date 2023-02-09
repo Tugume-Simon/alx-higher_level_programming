@@ -9,7 +9,7 @@ def add_attribute(obj, attribute, value):
     the message "can't add new attribute is printed"
 
     """
-    if type(obj) not in [int, float, str, tuple, bool, None]:
+    if type(obj) not in [int, float, str, tuple, None, list]:
         setattr(obj, attribute, value)
     else:
         raise TypeError("can't add new attribute")
