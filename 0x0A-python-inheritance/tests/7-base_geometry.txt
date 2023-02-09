@@ -66,6 +66,11 @@ checking for non-integral values
 	...
     	TypeError: value must be an integer
 
+	>>> bg.integer_validator("value", True)
+	Traceback (most recent call last):
+	...
+    	TypeError: value must be an integer
+
 checking for values not greater than 0
 	>>> bg.integer_validator("value", 0)
 	Traceback (most recent call last):
@@ -77,3 +82,8 @@ checking for values not greater than 0
 	...
 	ValueError: value must be greater than 0
 
+checking with no arguments
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+	...
+    	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
