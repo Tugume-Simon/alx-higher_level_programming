@@ -3,23 +3,15 @@
 
 
 class MyList(list):
-    """MyList class
-
-    instantiates the list class it inherits and
-    adds one new method print_sorted
-
-    Attributes:
-        none
+    """MyList class -- inherits from the list class""
 
     Methods:
-        __init__ - instantiates the class plus base
-        class(es)
         print_sorted - prints the list in ascending
         order
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, iterable=()):
+        super().__init__(iterable)
 
     def print_sorted(self):
         """prints a list in ascending order (sorted)"""
