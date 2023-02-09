@@ -8,42 +8,49 @@ This file tests a module 1-my_list that
 inherrits from the list class
 
 Import
->>> MyList = __import__('1-my_list').MyList
+	>>> MyList = __import__('1-my_list').MyList
 
 Checking list creation
->>> MyList([1, 3, 5, 6])
-[1, 3, 5, 6]
+	>>> MyList([1, 3, 5, 6])
+	[1, 3, 5, 6]
 
 Appending to list
->>> list1 = MyList([1, 4, 5, 7])
->>> list1.append(3)
->>> list1.append(6)
->>> list1.append(8)
->>> list1.append(4)
->>> list1
-[1, 4, 5, 7, 3, 6, 8, 4]
+	>>> list1 = MyList([1, 4, 5, 7])
+	>>> list1.append(3)
+	>>> list1.append(6)
+	>>> list1.append(8)
+	>>> list1.append(4)
+	>>> list1
+	[1, 4, 5, 7, 3, 6, 8, 4]
 
 Checking print_sorted() function
->>> list1.print_sorted()
-[1, 3, 4, 4, 5, 6, 7, 8]
->>> list1
-[1, 4, 5, 7, 3, 6, 8, 4]
+	>>> list1.print_sorted()
+	[1, 3, 4, 4, 5, 6, 7, 8]
+	>>> list1
+	[1, 4, 5, 7, 3, 6, 8, 4]
 
 checking list sort
->>> list2 = MyList([3, 4, 1, 7, 2])
->>> list2.sort()
->>> list2
-[1, 2, 3, 4, 7]
+	>>> list2 = MyList([3, 4, 1, 7, 2])
+	>>> list2.sort()
+	>>> list2
+	[1, 2, 3, 4, 7]
 
 checking list sort with negative numbers
->>> list2.append(-2)
->>> list2.append(-5)
->>> list2.append(-8)
->>> list2
-[1, 2, 3, 4, 7, -2, -5, -8]
->>> list2.print_sorted()
-[-8, -5, -2, 1, 2, 3, 4, 7]
->>> list2.sort()
->>> list2
-[-8, -5, -2, 1, 2, 3, 4, 7]
+	>>> list2.append(-2)
+	>>> list2.append(-5)
+	>>> list2.append(-8)
+	>>> list2
+	[1, 2, 3, 4, 7, -2, -5, -8]
+	>>> list2.print_sorted()
+	[-8, -5, -2, 1, 2, 3, 4, 7]
+	>>> list2.sort()
+	>>> list2
+	[-8, -5, -2, 1, 2, 3, 4, 7]
+
+checking empty list
+	>>> list3 = MyList([])
+	>>> list3
+	[]
+	>>> list3.print_sorted()
+	[]
 
