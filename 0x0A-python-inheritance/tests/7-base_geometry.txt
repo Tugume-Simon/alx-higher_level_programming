@@ -7,17 +7,32 @@ Using ``BaseGeometry`` class
 This file tests a module 7-base_geometry
 that implements base geometry
 
-Import:
+Import and initialization:
 	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 	>>> bg = BaseGeometry()
 
-Tests:
+checking for string value input
 	>>> bg.integer_validator("int1", "3")
 	Traceback (most recent call last):
 	...
     	TypeError: int1 must be an integer
 
+checking for negative integer input
 	>>> bg.integer_validator("int2", -4)
 	Traceback (most recent call last):
 	...
 	ValueError: int2 must be greater than 0
+
+checking for NaN as value input
+	>>> from numpy import nan
+	>>> bg.integer_validator("width", nan)
+	Traceback (most recent call last):
+	...
+    	TypeError: width must be an integer
+
+testing area calculation
+	>>> bg.area()
+	Traceback (most recent call last):
+	...
+    	Exception: area() is not implemented
+
