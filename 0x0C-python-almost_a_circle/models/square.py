@@ -47,3 +47,7 @@ class Square(Rectangle):
                 if key == 'id' and type(value) is not int:
                     raise TypeError("id must be an integer")
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """returns the dictionary representation of the square object"""
+        return {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}
