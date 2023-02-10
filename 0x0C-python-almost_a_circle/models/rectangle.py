@@ -117,8 +117,17 @@ class Rectangle(Base):
         return f'[Rectangle] ({self.id}) {self.x}/{self.y} -\
  {self.width}/{self.height}'
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates the attribute(s) with a new argument"""
-        attribs = ['id', 'width', 'height', 'x', 'y']
-        for n in range(len(args)):
-            setattr(self, attribs[n], args[n])
+
+        if len(args) > 0:
+            attribs = ['id', 'width', 'height', 'x', 'y']
+            for n in range(len(args)):
+                if attribs[n] == 'id' and type(args[n]) is not int:
+                    raise ValueError("id must be an integer")
+                setattr(self, attribs[n], args[n])
+        else:
+            for key, value in kwargs.items():
+                if key == 'id' and type(value) is not int:
+                    raise ValueError("id must be an integer")
+                setattr(self, key, value)
