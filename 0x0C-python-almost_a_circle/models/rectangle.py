@@ -131,3 +131,8 @@ class Rectangle(Base):
                 if key == 'id' and type(value) is not int:
                     raise ValueError("id must be an integer")
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """returns the dictionary representation of a rectangle"""
+        return {'id': self.id, 'width': self.width, 'height': self.height,
+                'x': self.x, 'y': self.y}
