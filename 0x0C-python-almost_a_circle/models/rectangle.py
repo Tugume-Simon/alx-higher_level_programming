@@ -96,3 +96,14 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
 
         self.__y = cordinate
+
+    def area(self):
+        """Returns the area of the rectangle"""
+        return self.__width * self.__height
+
+    def display(self):
+        """prints a pictorial representation of the rectangle"""
+        for h in range(self.height):
+            for w in range(self.width):
+                print("#", end="")
+            print()
