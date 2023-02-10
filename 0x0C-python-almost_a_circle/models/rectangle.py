@@ -17,7 +17,7 @@ class Rectangle(Base):
     """
     def __init__(self, width, height, x=0, y=0, id=None):
         """initializes object attributes
-        
+
         Args:
             width: width of rectangle
             height: height of rectangle
@@ -107,3 +107,8 @@ class Rectangle(Base):
             for w in range(self.width):
                 print("#", end="")
             print()
+
+    def __str__(self):
+        """Returns the object representation in string format"""
+        return f'''[Rectangle] ({self.id}) {self.x}/{self.y} -
+         {self.width}/{self.height}'''
