@@ -103,7 +103,11 @@ class Rectangle(Base):
 
     def display(self):
         """prints a pictorial representation of the rectangle"""
+        for i in range(self.y):
+            print()
         for h in range(self.height):
+            for j in range(self.x):
+                print(" ", end="")
             for w in range(self.width):
                 print("#", end="")
             print()
