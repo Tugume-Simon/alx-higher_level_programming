@@ -124,12 +124,12 @@ class Rectangle(Base):
             attribs = ['id', 'width', 'height', 'x', 'y']
             for n in range(len(args)):
                 if attribs[n] == 'id' and type(args[n]) is not int:
-                    raise ValueError("id must be an integer")
+                    raise TypeError("id must be an integer") 
                 setattr(self, attribs[n], args[n])
         else:
             for key, value in kwargs.items():
                 if key == 'id' and type(value) is not int:
-                    raise ValueError("id must be an integer")
+                    raise TypeError("id must be an integer") 
                 setattr(self, key, value)
 
     def to_dictionary(self):

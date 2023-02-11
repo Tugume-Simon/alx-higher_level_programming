@@ -37,6 +37,16 @@ class Base:
  a list of dictionaries""")
         return json.dumps(list_dictionaries)
 
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON string representation"""
+
+        if json_string is None or json_string == "":
+            return []
+        if type(json_string) is not str:
+            raise TypeError("not a string representing a list of dictionaries")
+        return json.loads(json_string)
+
     @classmethod
     def save_to_file(cls, list_objs):
         """writes to a file string representation of list_objs
@@ -55,3 +65,38 @@ class Base:
 
         with open(filename, "w", encoding='utf-8') as f:
             json.dump(json_string, f)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """creates new class instance and updates it, setting all attributes"""
+
+        classname = cls.__name__
+        if classname == 'Rectangle':
+            dummy = cls(1, 2)
+        elif classname == 'Square':
+            dummy = cls(1)
+
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances from json file"""
+
+        filename = cls.__name__ + '.json'
+
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                json_string = f.readline()
+                if json_string == '':
+                    raise Exception('file empty')
+        except Exception:
+            return []
+        else:
+            list_dicts = cls.from_json_string(json_string)
+
+        instances = []
+        for el in list_dicts:
+            instances.append(cls.create(**el))
+
+        return instances
