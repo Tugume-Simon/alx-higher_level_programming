@@ -16,6 +16,10 @@ class Base:
     def __init__(self, id=None):
         """initializes class attributes"""
         if id is not None:
+            if type(id) is not int:
+                raise TypeError("id must be an integer")
+            if id <= 0:
+                raise ValueError("id must be >= 0")
             self.id = id
         else:
             Base.__nb_objects += 1
