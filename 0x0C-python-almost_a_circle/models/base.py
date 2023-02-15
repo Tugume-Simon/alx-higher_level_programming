@@ -58,13 +58,17 @@ class Base:
         list_objs is a list of instances that inherit from the
         Base class
         """
+        if type(list_objs) is not list:
+            raise TypeError("list_objs must be a list of Base class instances")
 
         json_string = []
         filename = cls.__name__ + '.json'
         if len(list_objs) != 0:
             for obj in list_objs:
+                if type(obj) is not object:
+                    raise TypeError("non object found in the iteratable")
                 if not isinstance(obj, cls):
-                    raise TypeError("non object found in list of objects")
+                    raise TypeError("instance must inherit from Base class")
                 json_string.append(obj.to_dictionary())
 
         with open(filename, "w", encoding='utf-8') as f:

@@ -38,9 +38,12 @@ class Square(Rectangle):
 
         if len(args) > 0:
             attribs = ['id', 'size', 'x', 'y']
-            for n in range(len(args)):
-                if attribs[n] == 'id' and type(args[n]) is not int:
-                    raise TypeError("id must be an integer")
+            for n in range(len(attribs)):
+                if attribs[n] == 'id':
+                    if type(args[n]) is not int:
+                        raise TypeError("id must be an integer")
+                    if args[n] <= 0:
+                        raise ValueError("id must be >= 0")
                 setattr(self, attribs[n], args[n])
         else:
             for key, value in kwargs.items():

@@ -346,3 +346,20 @@ class TestRectangleClass(unittest.TestCase):
         r = Rectangle(3, 6, 7, 3, 1)
         r.update(3, 5, 6, 3, 6, 7, 8, 2)
         self.assertTrue(r)
+
+    #---------------to_dictionary------------------
+    def test_to_dictionary(self):
+        """Tests the to_dictionary() method"""
+        r = Rectangle(3, 4, 5, 6, 89)
+        self.assertEqual(r.to_dictionary(), {'height': 4, 'id': 89, 'width': 3, 'x': 5, 'y': 6})
+
+    def test_to_dictionary_args(self):
+        """Tests whether error is raised when args passed"""
+        r = Rectangle(3, 2, 1, 6, 89)
+        with self.assertRaises(TypeError):
+            r.to_dictionary(2)
+
+    def test_to_dictionary_type(self):
+        """Tests for the type of to_dictionary()"""
+        r = Rectangle(3, 2, 4, 97)
+        self.assertTrue(type(r.to_dictionary()) is dict)
