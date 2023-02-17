@@ -75,7 +75,7 @@ class Base:
                 json_string.append(obj.to_dictionary())
 
         with open(filename, "w", encoding='utf-8') as f:
-            json.dump(json_string, f)
+            f.write(cls.to_json_string(json_string))
 
     @classmethod
     def create(cls, **dictionary):
