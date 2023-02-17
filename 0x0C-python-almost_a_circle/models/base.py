@@ -102,8 +102,11 @@ class Base:
 
         filename = cls.__name__ + '.json'
 
-        with open(filename, 'r', encoding='utf-8') as f:
-            json_string = f.readline()
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                json_string = f.readline()
+        except FileNotFoundError:
+            return []
 
         if json_string == '':
             return []
