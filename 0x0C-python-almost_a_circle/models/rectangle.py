@@ -123,11 +123,6 @@ class Rectangle(Base):
         if len(args) > 0:
             attribs = ['id', 'width', 'height', 'x', 'y']
             for n in range(len(attribs)):
-                if attribs[n] == 'id':
-                    if type(args[n]) is not int:
-                        raise TypeError("id must be an integer")
-                    if args[n] <= 0:
-                        raise ValueError("id must be > 0")
                 setattr(self, attribs[n], args[n])
         else:
             for key, value in kwargs.items():
