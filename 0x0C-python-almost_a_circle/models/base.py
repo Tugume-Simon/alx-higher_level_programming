@@ -49,7 +49,12 @@ class Base:
             return []
         if type(json_string) is not str:
             raise TypeError("not a string representing a list of dictionaries")
-        return json.loads(json_string)
+        try:
+            value = json.loads(json_string)
+        except Exception:
+            raise ValueError("Invalid JSON string passed")
+        else:
+            return value
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -65,8 +70,6 @@ class Base:
         filename = cls.__name__ + '.json'
         if len(list_objs) != 0:
             for obj in list_objs:
-                if type(obj) is not object:
-                    raise TypeError("non object found in the iteratable")
                 if not isinstance(obj, cls):
                     raise TypeError("instance must inherit from Base class")
                 json_string.append(obj.to_dictionary())
@@ -77,6 +80,9 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """creates new class instance and updates it, setting all attributes"""
+
+        if len(dictionary) == 0:
+            raise ValueError("No values provided")
 
         classname = cls.__name__
         if classname == 'Rectangle':
@@ -93,12 +99,10 @@ class Base:
 
         filename = cls.__name__ + '.json'
 
-        try:
-            with open(filename, 'r', encoding='utf-8') as f:
-                json_string = f.readline()
-                if json_string == '':
-                    raise Exception('file empty')
-        except Exception:
+        with open(filename, 'r', encoding='utf-8') as f:
+            json_string = f.readline()
+
+        if json_string == '':
             return []
         else:
             list_dicts = cls.from_json_string(json_string)

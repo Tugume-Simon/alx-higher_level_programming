@@ -46,8 +46,7 @@ class TestRectangleClass(unittest.TestCase):
         r = Rectangle(5, 9)
         self.assertEqual(r.id, 1)
 
-
-    #--------------Number_of_arguments_passed------------------
+    # --------------Number_of_arguments_passed------------------
     def test_init_without_args(self):
         """tests if instantiation without arguments fails"""
         with self.assertRaises(TypeError):
@@ -83,10 +82,10 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r.y, 1)
         self.assertEqual(r.id, 89)
 
-    #---------------Type_of_arguments---------------------
+    # ---------------Type_of_arguments---------------------
     def test_type_arguments(self):
         """Tests for invalid types passed in each of the parameters
-        
+
         Description: The class __init__ method takes in 5 arguments,
         we need to test for each of the parameters whether the class
         accepts a non-integer type i.e. tuple, boolean, string, list,
@@ -100,20 +99,20 @@ class TestRectangleClass(unittest.TestCase):
         args_list = ['width', 'height', 'x', 'y', 'id']
         def_args = [2, 8, 9, 6]
         test_vals = [(2,), True, "name", 3.14, [3, 4, 5], {3, 5}, None,
-                {'value': 5}, float('-inf'), float('inf'), float('nan')]
+                     {'value': 5}, float('-inf'), float('inf'), float('nan')]
         for arg in args_list:
             idx = args_list.index(arg)
 
             for test in test_vals:
                 def_args_copy = def_args.copy()
                 if (arg == 'id'):
-                    if test == None:
+                    if test is None:
                         continue
                 def_args_copy.insert(idx, test)
                 with self.assertRaises(TypeError):
                     Rectangle(*def_args_copy)
 
-    #------------------Value_of_arguments--------------------------
+    # ------------------Value_of_arguments--------------------------
     def test_neg_value_arguments(self):
         """Tests whether negative integral value arguments are invalid"""
 
@@ -130,7 +129,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_zero_value_arguments(self):
         """Tests for zero arguments on id, width and height parameters
-        
+
         i.e. following the order -> Rectangle(width, height, x, y, id)
         """
 
@@ -143,7 +142,7 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(2, 4, 0, 2, 0)
 
-    #------------------Getters_and_Setters--------------------------
+    # ------------------Getters_and_Setters--------------------------
     def test_getters_and_setters(self):
         """Tests the getters and setters of the parameters 'id' excluded"""
 
@@ -159,14 +158,15 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(r1.y, 25)
         self.assertEqual(str(r1), '[Rectangle] (1) 33/25 - 52/61')
         self.assertEqual(r1.__dict__, {'_Rectangle__height': 61,
-'_Rectangle__width': 52, '_Rectangle__x': 33, '_Rectangle__y': 25, 'id': 1})
+                         '_Rectangle__width': 52, '_Rectangle__x': 33,
+                                       '_Rectangle__y': 25, 'id': 1})
 
-    #------------------Area--------------------------------
+    # ------------------Area--------------------------------
     def test_area_with_args(self):
         """Tests if the area method raises an error if args passed"""
         with self.assertRaises(TypeError):
             self.rect.area(1)
-    
+
     def test_area_proper(self):
         """Tests for correct output of the area method"""
         self.assertEqual(self.rect.width, 4)
@@ -178,7 +178,7 @@ class TestRectangleClass(unittest.TestCase):
         r = Rectangle(w, h)
         self.assertEqual(r.area(), w * h)
 
-    #-------------------Display------------------------------
+    # -------------------Display------------------------------
     def test_display_with_args(self):
         """Tests if the display method raises an error if args passed"""
         with self.assertRaises(TypeError):
@@ -188,7 +188,7 @@ class TestRectangleClass(unittest.TestCase):
         """Tests the display of rectangle without offsets"""
         r1 = Rectangle(4, 5)
         r2 = Rectangle(10, 3)
-        
+
         expected_output = "####\n####\n####\n####\n####\n"
         with StringIO() as output, redirect_stdout(output):
             r1.display()
@@ -198,7 +198,7 @@ class TestRectangleClass(unittest.TestCase):
         with StringIO() as output, redirect_stdout(output):
             r2.display()
             self.assertEqual(output.getvalue(), expected_output)
-    
+
     def test_display_with_offset(self):
         """Tests the display of rectangle with cordinates"""
         r1 = Rectangle(4, 5, 3, 2)
@@ -210,12 +210,12 @@ class TestRectangleClass(unittest.TestCase):
             self.assertEqual(o_buffer.getvalue(), expected_output)
 
         expected_output = "\n\n\n\n" + 9 * "        ######\n"
-        
+
         with StringIO() as o_buffer, redirect_stdout(o_buffer):
             r2.display()
             self.assertEqual(o_buffer.getvalue(), expected_output)
 
-    #------------------str()----------------------
+    # ------------------str()----------------------
     def test_str(self):
         """Tests the __str__() function of the Rectangle class"""
         str_rep = self.rect.__str__()
@@ -230,7 +230,7 @@ class TestRectangleClass(unittest.TestCase):
         """Tests the __str__() in a different usage"""
         self.assertEqual(str(self.rect), "[Rectangle] (67) 2/3 - 4/5")
 
-    #----------------update()------------------------------
+    # ----------------update()------------------------------
     def test_update_no_args(self):
         """Tests the update function of the Rectangle class"""
         rect_dict = str(self.rect.__dict__)
@@ -285,29 +285,29 @@ class TestRectangleClass(unittest.TestCase):
         self.assertNotEqual(r.id, i)
         self.assertEqual(r.id, 1)
         self.assertNotEqual(str(r.__dict__), r.dict)
-        
+
         r.update(y=4, height=3)
         self.assertEqual(r.y, 4)
         self.assertEqual(r.height, 3)
 
         r.update(width=1)
         self.assertEqual(r.width, 1)
-    
+
     def test_update_type_errors(self):
         """Tests if update function raises errors for invalid args"""
-        
+
         r = Rectangle(2, 3, 4, 5, 6)
         args_list = ['id', 'width', 'height', 'x', 'y']
         def_args = [2, 8, 9, 6]
         test_vals = [(2,), True, "name", 3.14, [3, 4, 5], {3, 5}, None,
-                {'value': 5}, float('-inf'), float('inf'), float('nan')]
+                     {'value': 5}, float('-inf'), float('inf'), float('nan')]
         for arg in args_list:
             idx = args_list.index(arg)
 
             for test in test_vals:
                 def_args_copy = def_args.copy()
                 if (arg == 'id'):
-                    if test == None:
+                    if test is None:
                         continue
                 def_args_copy.insert(idx, test)
                 with self.assertRaises(TypeError):
@@ -347,11 +347,12 @@ class TestRectangleClass(unittest.TestCase):
         r.update(3, 5, 6, 3, 6, 7, 8, 2)
         self.assertTrue(r)
 
-    #---------------to_dictionary------------------
+    # ---------------to_dictionary------------------
     def test_to_dictionary(self):
         """Tests the to_dictionary() method"""
         r = Rectangle(3, 4, 5, 6, 89)
-        self.assertEqual(r.to_dictionary(), {'height': 4, 'id': 89, 'width': 3, 'x': 5, 'y': 6})
+        self.assertEqual(r.to_dictionary(), {'height': 4, 'id': 89,
+                         'width': 3, 'x': 5, 'y': 6})
 
     def test_to_dictionary_args(self):
         """Tests whether error is raised when args passed"""

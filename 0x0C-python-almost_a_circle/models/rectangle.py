@@ -132,7 +132,7 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 if key == 'id' and type(value) is not int:
-                    raise TypeError("id must be an integer") 
+                    raise TypeError("id must be an integer")
                 setattr(self, key, value)
 
     def to_dictionary(self):

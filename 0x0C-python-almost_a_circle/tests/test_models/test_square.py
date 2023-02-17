@@ -15,7 +15,7 @@ class TestSquareClass(unittest.TestCase):
     def tearDown(self):
         """Resets the instances count"""
         Base._Base_nb_objects = 0
-    
+
     def test_instance_valid(self):
         """test if instantiation works"""
         self.assertTrue(self.square)
@@ -65,7 +65,7 @@ class TestSquareClass(unittest.TestCase):
 
         self.assertEqual(s.id, 99)
 
-    #-------------arguments_passing----------------------
+    # -------------arguments_passing----------------------
     def test_init_no_args(self):
         """tests whether error is raised if no arg is passed"""
         with self.assertRaises(TypeError):
@@ -95,21 +95,21 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(s.y, 4)
         self.assertEqual(s.id, 7)
 
-    #----------------Type_of_arguments------------------------
+    # ----------------Type_of_arguments------------------------
     def test_arguments_type(self):
         """tests if error is raised when invalid arguments are passed"""
-        
+
         args_list = ['size', 'x', 'y', 'id']
         def_args = [2, 8, 9]
         test_vals = [(2,), True, "name", 3.14, [3, 4, 5], {3, 5}, None,
-                {'value': 5}, float('-inf'), float('inf'), float('nan')]
+                     {'value': 5}, float('-inf'), float('inf'), float('nan')]
         for arg in args_list:
             idx = args_list.index(arg)
 
             for test in test_vals:
                 def_args_copy = def_args.copy()
                 if (arg == 'id'):
-                    if test == None:
+                    if test is None:
                         continue
                 def_args_copy.insert(idx, test)
                 with self.assertRaises(TypeError):
@@ -138,7 +138,7 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square(2, 4, 0, 0)
 
-    #------------str()----------------------
+    # ------------str()----------------------
     def test_str(self):
         """Tests the __str__() function of Square class"""
         str_str = self.square.__str__()
@@ -153,7 +153,7 @@ class TestSquareClass(unittest.TestCase):
         """Tests the __str__() function in an alternative way"""
         self.assertEqual(str(self.square.__str__()), "[Square] (89) 2/1 - 5")
 
-    #--------------Getters_and_setters--------------------
+    # --------------Getters_and_setters--------------------
     def test_getter_and_setter(self):
         """Tests the getter and setter of the class Square"""
 
@@ -165,7 +165,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(s1.height, 57)
         self.assertEqual(str(s1), "[Square] (1) 4/2 - 57")
 
-    #---------------update--------------------
+    # ---------------update--------------------
     def test_update_no_args(self):
         """Tests the update function of the Rectangle class"""
         sq_dict = str(self.square.__dict__)
@@ -176,7 +176,7 @@ class TestSquareClass(unittest.TestCase):
         """Tests the update function with args provided"""
 
         s = Square(2, 4, 0, 1)
-        l = s.size
+        ll = s.size
         x = s.x
         y = s.y
         i = s.id
@@ -184,7 +184,7 @@ class TestSquareClass(unittest.TestCase):
 
         s.update(3, 5, 1, 3)
 
-        self.assertNotEqual(s.width, l)
+        self.assertNotEqual(s.width, ll)
         self.assertTrue(s.width == s.height)
         self.assertEqual(s.size, s.width)
         self.assertEqual(s.size, 5)
@@ -216,31 +216,31 @@ class TestSquareClass(unittest.TestCase):
         self.assertNotEqual(sq.y, y)
         self.assertEqual(sq.y, 1)
         self.assertNotEqual(sq.id, i)
-        self.assertEqual(sq.id,1)
+        self.assertEqual(sq.id, 1)
         self.assertNotEqual(str(sq.__dict__), sq.dict)
-        
+
         sq.update(y=4, size=3)
         self.assertEqual(sq.y, 4)
         self.assertEqual(sq.size, 3)
 
         sq.update(size=1)
         self.assertEqual(sq.size, sq.width, 1)
-    
+
     def test_update_type_errors(self):
         """Tests if update function raises errors for invalid args"""
-        
+
         s = Square(2, 3, 4, 5)
         args_list = ['id', 'size', 'x', 'y']
         def_args = [2, 8, 9]
         test_vals = [(2,), True, "name", 3.14, [3, 4, 5], {3, 5}, None,
-                {'value': 5}, float('-inf'), float('inf'), float('nan')]
+                     {'value': 5}, float('-inf'), float('inf'), float('nan')]
         for arg in args_list:
             idx = args_list.index(arg)
 
             for test in test_vals:
                 def_args_copy = def_args.copy()
                 if (arg == 'id'):
-                    if test == None:
+                    if test is None:
                         continue
                 def_args_copy.insert(idx, test)
                 with self.assertRaises(TypeError):
@@ -277,11 +277,12 @@ class TestSquareClass(unittest.TestCase):
         s.update(3, 5, 6, 3, 6, 7, 8, 2)
         self.assertTrue(s)
 
-    #---------------to_dictionary----------------
+    # ---------------to_dictionary----------------
     def test_to_dictionary(self):
         """Tests the to_dictionary() method"""
         s = Square(3, 4, 5, 89)
-        self.assertEqual(s.to_dictionary(), {'id': 89, 'size': 3, 'x': 4, 'y': 5})
+        self.assertEqual(s.to_dictionary(), {'id': 89, 'size': 3, 'x': 4,
+                         'y': 5})
 
     def test_to_dictionary_args(self):
         """Tests whether error is raised when args passed"""
