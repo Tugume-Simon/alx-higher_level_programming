@@ -36,15 +36,16 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """update of square object"""
 
-        if len(args) > 0:
-            attribs = ['id', 'size', 'x', 'y']
-            for n in range(len(attribs)):
-                if attribs[n] == 'id':
-                    if type(args[n]) is not int:
-                        raise TypeError("id must be an integer")
-                    if args[n] <= 0:
-                        raise ValueError("id must be >= 0")
-                setattr(self, attribs[n], args[n])
+        attribs = ['id', 'size', 'x', 'y']
+        for n in range(len(args)):
+            if n >= len(attribs):
+                break
+            if attribs[n] == 'id':
+                if type(args[n]) is not int:
+                    raise TypeError("id must be an integer")
+                if args[n] <= 0:
+                    raise ValueError("id must be >= 0")
+            setattr(self, attribs[n], args[n])
         else:
             for key, value in kwargs.items():
                 if key == 'id' and type(value) is not int:
