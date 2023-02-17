@@ -373,8 +373,7 @@ class TestBaseClass(unittest.TestCase):
         else:
             os.remove(f'./{filename}')
 
-        with self.assertRaises(FileNotFoundError):
-            Rectangle.load_from_file()
+        self.assertEqual(Rectangle.load_from_file(), [])
 
     def test_load_from_file_empty(self):
         """Tests if an empty list is returned if the file is empty"""
