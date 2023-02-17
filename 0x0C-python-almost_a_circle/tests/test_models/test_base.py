@@ -255,6 +255,16 @@ class TestBaseClass(unittest.TestCase):
 
         self.assertEqual(content, expected_write)
 
+    def test_save_to_file_None(self):
+        """Tests whether an empty list is saved to file for 'None' as arg"""
+        filename = 'Rectangle.json'
+
+        Rectangle.save_to_file(None)
+        with open(filename, 'r') as f:
+            content = f.readline()
+
+        self.assertEqual(content, "[]")
+
     def test_save_to_file_verify_json(self):
         """Tests whether the content writted to file is in json format"""
 
